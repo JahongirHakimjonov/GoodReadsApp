@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Author Detail{% endblock %}
+{% block content %}
+    <h1>Author Detail</h1>
+    <div class="col-4 mt-3">
+        <div>
+            <h2>{{ author.first_name }} {{ author.last_name }}</h2>
+            <p>Birthdate: {{ author.birthdate }}</p>
+            <p>Email: {{ author.email }}</p>
+            <p>About: {{ author.about }}</p>
+            <img src="{{ author.avatar.url }}" alt="Author's avatar">
+            <a href="{{ author.website }}">Website</a>
+        </div>
+    </div>
+{% endblock %}

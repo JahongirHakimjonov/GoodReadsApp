@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}{% endblock %}
+{% block content %}
+    <h2>Update Review</h2>
+    <div class="col-4 mt-3">
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+{#            {{ form.as_p }}#}
+            <button type="submit">Update Review</button>
+        </form>
+    </div>
+{% endblock %}

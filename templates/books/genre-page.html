@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %} Books in Genre: {{ genre }} {% endblock %}
+{% block content %}
+
+    <div class="py-4">
+        <h3>Books in Genre: {{ genre }}</h3>
+    </div>
+    {% for book in books %}
+        <div class="row mb-3">
+            <div class="col-2">
+                <img src="{{ book.cover.url }}" alt="No Pic" class="img-fluid">
+            </div>
+            <div class="col-6">
+                <a href="{% url 'books:book-detail' book.slug %}"> {{ book.title }}</a>
+                <p>{{ book.description }}</p>
+            </div>
+        </div>
+    {% empty %}
+    {% endfor %}
+    <h3>No Books in this Genre</h3>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+{% endblock %}

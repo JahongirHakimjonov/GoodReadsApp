@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Add Author{% endblock %}
+{% block content %}
+    <h2>Add Author</h2>
+    <div class="col-4 mt-3">
+        <!-- add-author.html -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+{#            {{ form.as_p }}#}
+            <button type="submit" class="btn btn-secondary mt-2">Add Author</button>
+        </form>
+    </div>
+{% endblock %}
